@@ -24,7 +24,7 @@
 
 1685533404 c:\users\user1\desktop\word\curr_exch\accmod.h
 
-1685739694 source:c:\users\user\desktop\currencycon\main.c
+1685792754 source:c:\users\user\desktop\currencycon\main.c
 	<stdio.h>
 	<stdlib.h>
 	"Struct.h"
@@ -36,14 +36,15 @@
 
 1685737806 c:\users\user\desktop\currencycon\struct.h
 
-1685737790 c:\users\user\desktop\currencycon\convert.h
+1685740150 c:\users\user\desktop\currencycon\convert.h
 	"Insert.h"
 
 1685737800 c:\users\user\desktop\currencycon\insert.h
 
-1685737798 c:\users\user\desktop\currencycon\dis.h
+1685740175 c:\users\user\desktop\currencycon\dis.h
 
-1685739832 c:\users\user\desktop\currencycon\searchid.h
+1685740319 c:\users\user\desktop\currencycon\searchid.h
 
-1685737792 c:\users\user\desktop\currencycon\accmod.h
+1685807967 c:\users\user\desktop\currencycon\accmod.h
+	<string.h>
 

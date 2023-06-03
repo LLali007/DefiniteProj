@@ -73,9 +73,9 @@ int main()
             case 4:
                 // Perform action for Option 4
             {
-                //accMode();
-                printf("Comming soon... \n");
-                printf("Extra feature on work. \n");
+                accMode();
+              //  printf("Comming soon... \n");
+              // printf("Extra feature on work. \n");
 
              break;
 

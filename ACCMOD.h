@@ -1,5 +1,6 @@
 #ifndef ACCMOD_H_INCLUDED
 #define ACCMOD_H_INCLUDED
+#include <string.h>
 void listOfcur()
 {
     //LIST of currencies
@@ -12,29 +13,92 @@ void listOfcur()
     printf("=  6. SEK         12.JPY   =\n");
     printf("============================\n");
 }
-void convertMon(double dep)
-{
-    printf("Your deposit is: ");
-    printf("%lf",dep);
-     printf("\n");
+int opti;
 
+void displayBal (double dep,double conn)
+{
+    double rrez=0;
+    char mone [10];
+
+    printf("Your deposit is: ");
+    printf("%.2lf",dep-conn);
+    printf("\n");
+
+
+    switch(opti)
+    {
+     case 1:
+        strcpy(mone,"EUR");
+        break;
+    case 2:
+        strcpy(mone,"LEK");
+        break;
+
+    case 3:
+        strcpy(mone,"AUD");
+        break;
+
+    case 4:
+        strcpy(mone,"CHF");
+        break;
+
+    case 5:
+        strcpy(mone,"HKD");
+        break;
+    case 6:
+        strcpy(mone,"SEK");
+        break;
+    case 7:
+        strcpy(mone,"USD");
+        break;
+    case 8:
+        strcpy(mone,"GBP");
+        break;
+    case 9:
+        strcpy(mone,"CAD");
+        break;
+    case 10:
+        strcpy(mone,"CNY");
+        break;
+    case 11:
+        strcpy(mone,"NZD");
+        break;
+    case 12:
+        strcpy(mone,"JPY");
+        break;
+    }
+    printf("Curr: %s",mone);
+    printf("\n");
 }
 
 double enterDep(char name [],char surname [])
 {
-    int opt;
+    int i=0;
     double dep;
+    char ch;
+    char psw [30];
 
-
-    printf("Enter name: ");
+    printf("Enter username: ");
     scanf("%s",&name);
-    printf("Enter surname: ");
-    scanf("%s",&surname);
+    printf("Enter password: ");
+    while((ch=_getch())!=13)
+    {
+        psw[i]=ch;
+        i++;
+        printf("*");
+    }
+    psw[i]='\0';
+    printf("\n");
+
+
+    printf("Your password: %s \n",psw);
+
+
 
 
     listOfcur();
     printf("Choose the currency: ");
-    scanf("%d",&opt);
+    scanf("%d",&opti);
 
     printf("Enter the amount you want to deposit: ");
     scanf("%lf",&dep);
@@ -43,12 +107,32 @@ double enterDep(char name [],char surname [])
     return dep;
 
 }
+double withdrawMon(double dep)
+{
+    double withd;
+    printf("Your deposit is: ");
+    printf("%lf",dep);
+    printf("\n");
+    printf("Withdraw thr amount: ");
+    scanf("%lf",&withd);
+    if(withd>dep)
+    {
+        printf("Invalid withdraw. \n");
+        return;
+    }
+    dep=dep-withd;
+    printf("\n");
+
+
+return withd;
+
+}
 
 void accMenu()
 {
-    printf("==================== MENU ================\n");
+    printf("=================== MENU =================\n");
     printf("=     1. Enter Deposit                   =\n");
-    printf("=     2. Convert money                   =\n");
+    printf("=     2. Withdraw money                  =\n");
     printf("=     3. See Balance                     =\n");
     printf("=     4. Remove Account                  =\n");
     printf("=     0. Exit                            =\n");
@@ -61,7 +145,7 @@ void accMode()
     int cnt=0;
     char name [20];
     char surname [20];
-    double dep=0;
+    double conn=0,dep=0;
 
     for(;;)
     {
@@ -90,12 +174,21 @@ void accMode()
 
         case 2:
             // Perform action for Opp 2
-            convertMon(dep);
-            break;
+            conn=withdrawMon(dep);
+                   break;
 
         case 3:
             // Perform action for Opp 3
         {
+            displayBal(dep,conn);
+            break;
+
+        }
+        case 4:
+            // Perform action for Opp 4
+        {
+            cnt--;
+            printf("Account removed. \n");
             break;
 
         }

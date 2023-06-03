@@ -1,0 +1,297 @@
+warning: in the working copy of 'CURR_EXCH.layout', LF will be replaced by CRLF the next time Git touches it
+[1mdiff --git a/ACCMOD.h b/ACCMOD.h[m
+[1mindex 5d76fb9..2f66dea 100644[m
+[1m--- a/ACCMOD.h[m
+[1m+++ b/ACCMOD.h[m
+[36m@@ -1,5 +1,6 @@[m
+ #ifndef ACCMOD_H_INCLUDED[m
+ #define ACCMOD_H_INCLUDED[m
+[32m+[m[32m#include <string.h>[m
+ void listOfcur()[m
+ {[m
+     //LIST of currencies[m
+[36m@@ -12,29 +13,92 @@[m [mvoid listOfcur()[m
+     printf("=  6. SEK         12.JPY   =\n");[m
+     printf("============================\n");[m
+ }[m
+[31m-void convertMon(double dep)[m
+[32m+[m[32mint opti;[m
+[32m+[m
+[32m+[m[32mvoid displayBal (double dep,double conn)[m
+ {[m
+[32m+[m[32m    double rrez=0;[m
+[32m+[m[32m    char mone [10];[m
+[32m+[m
+     printf("Your deposit is: ");[m
+[31m-    printf("%lf",dep);[m
+[31m-     printf("\n");[m
+[32m+[m[32m    printf("%.2lf",dep-conn);[m
+[32m+[m[32m    printf("\n");[m
+ [m
+[32m+[m
+[32m+[m[32m    switch(opti)[m
+[32m+[m[32m    {[m
+[32m+[m[32m     case 1:[m
+[32m+[m[32m        strcpy(mone,"EUR");[m
+[32m+[m[32m        break;[m
+[32m+[m[32m    case 2:[m
+[32m+[m[32m        strcpy(mone,"LEK");[m
+[32m+[m[32m        break;[m
+[32m+[m
+[32m+[m[32m    case 3:[m
+[32m+[m[32m        strcpy(mone,"AUD");[m
+[32m+[m[32m        break;[m
+[32m+[m
+[32m+[m[32m    case 4:[m
+[32m+[m[32m        strcpy(mone,"CHF");[m
+[32m+[m[32m        break;[m
+[32m+[m
+[32m+[m[32m    case 5:[m
+[32m+[m[32m        strcpy(mone,"HKD");[m
+[32m+[m[32m        break;[m
+[32m+[m[32m    case 6:[m
+[32m+[m[32m        strcpy(mone,"SEK");[m
+[32m+[m[32m        break;[m
+[32m+[m[32m    case 7:[m
+[32m+[m[32m        strcpy(mone,"USD");[m
+[32m+[m[32m        break;[m
+[32m+[m[32m    case 8:[m
+[32m+[m[32m        strcpy(mone,"GBP");[m
+[32m+[m[32m        break;[m
+[32m+[m[32m    case 9:[m
+[32m+[m[32m        strcpy(mone,"CAD");[m
+[32m+[m[32m        break;[m
+[32m+[m[32m    case 10:[m
+[32m+[m[32m        strcpy(mone,"CNY");[m
+[32m+[m[32m        break;[m
+[32m+[m[32m    case 11:[m
+[32m+[m[32m        strcpy(mone,"NZD");[m
+[32m+[m[32m        break;[m
+[32m+[m[32m    case 12:[m
+[32m+[m[32m        strcpy(mone,"JPY");[m
+[32m+[m[32m        break;[m
+[32m+[m[32m    }[m
+[32m+[m[32m    printf("Curr: %s",mone);[m
+[32m+[m[32m    printf("\n");[m
+ }[m
+ [m
+ double enterDep(char name [],char surname [])[m
+ {[m
+[31m-    int opt;[m
+[32m+[m[32m    int i=0;[m
+     double dep;[m
+[32m+[m[32m    char ch;[m
+[32m+[m[32m    char psw [30];[m
+ [m
+[31m-[m
+[31m-    printf("Enter name: ");[m
+[32m+[m[32m    printf("Enter username: ");[m
+     scanf("%s",&name);[m
+[31m-    printf("Enter surname: ");[m
+[31m-    scanf("%s",&surname);[m
+[32m+[m[32m    printf("Enter password: ");[m
+[32m+[m[32m    while((ch=_getch())!=13)[m
+[32m+[m[32m    {[m
+[32m+[m[32m        psw[i]=ch;[m
+[32m+[m[32m        i++;[m
+[32m+[m[32m        printf("*");[m
+[32m+[m[32m    }[m
+[32m+[m[32m    psw[i]='\0';[m
+[32m+[m[32m    printf("\n");[m
+[32m+[m
+[32m+[m
+[32m+[m[32m    printf("Your password: %s \n",psw);[m
+[32m+[m
+[32m+[m
+ [m
+ [m
+     listOfcur();[m
+     printf("Choose the currency: ");[m
+[31m-    scanf("%d",&opt);[m
+[32m+[m[32m    scanf("%d",&opti);[m
+ [m
+     printf("Enter the amount you want to deposit: ");[m
+     scanf("%lf",&dep);[m
+[36m@@ -42,13 +106,33 @@[m [mdouble enterDep(char name [],char surname [])[m
+ [m
+     return dep;[m
+ [m
+[32m+[m[32m}[m
+[32m+[m[32mdouble withdrawMon(double dep)[m
+[32m+[m[32m{[m
+[32m+[m[32m    double withd;[m
+[32m+[m[32m    printf("Your deposit is: ");[m
+[32m+[m[32m    printf("%lf",dep);[m
+[32m+[m[32m    printf("\n");[m
+[32m+[m[32m    printf("Withdraw thr amount: ");[m
+[32m+[m[32m    scanf("%lf",&withd);[m
+[32m+[m[32m    if(withd>dep)[m
+[32m+[m[32m    {[m
+[32m+[m[32m        printf("Invalid withdraw. \n");[m
+[32m+[m[32m        return;[m
+[32m+[m[32m    }[m
+[32m+[m[32m    dep=dep-withd;[m
+[32m+[m[32m    printf("\n");[m
+[32m+[m
+[32m+[m
+[32m+[m[32mreturn withd;[m
+[32m+[m
+ }[m
+ [m
+ void accMenu()[m
+ {[m
+[31m-    printf("==================== MENU ================\n");[m
+[32m+[m[32m    printf("=================== MENU =================\n");[m
+     printf("=     1. Enter Deposit                   =\n");[m
+[31m-    printf("=     2. Convert money                   =\n");[m
+[32m+[m[32m    printf("=     2. Withdraw money                  =\n");[m
+     printf("=     3. See Balance                     =\n");[m
+     printf("=     4. Remove Account                  =\n");[m
+     printf("=     0. Exit                            =\n");[m
+[36m@@ -61,7 +145,7 @@[m [mvoid accMode()[m
+     int cnt=0;[m
+     char name [20];[m
+     char surname [20];[m
+[31m-    double dep=0;[m
+[32m+[m[32m    double conn=0,dep=0;[m
+ [m
+     for(;;)[m
+     {[m
+[36m@@ -90,12 +174,21 @@[m [mvoid accMode()[m
+ [m
+         case 2:[m
+             // Perform action for Opp 2[m
+[31m-            convertMon(dep);[m
+[31m-            break;[m
+[32m+[m[32m            conn=withdrawMon(dep);[m
+[32m+[m[32m                   break;[m
+ [m
+         case 3:[m
+             // Perform action for Opp 3[m
+         {[m
+[32m+[m[32m            displayBal(dep,conn);[m
+[32m+[m[32m            break;[m
+[32m+[m
+[32m+[m[32m        }[m
+[32m+[m[32m        case 4:[m
+[32m+[m[32m            // Perform action for Opp 4[m
+[32m+[m[32m        {[m
+[32m+[m[32m            cnt--;[m
+[32m+[m[32m            printf("Account removed. \n");[m
+             break;[m
+ [m
+         }[m
+[1mdiff --git a/CURR_EXCH.depend b/CURR_EXCH.depend[m
+[1mindex 8c4f225..8efb467 100644[m
+[1m--- a/CURR_EXCH.depend[m
+[1m+++ b/CURR_EXCH.depend[m
+[36m@@ -24,7 +24,7 @@[m
+ [m
+ 1685533404 c:\users\user1\desktop\word\curr_exch\accmod.h[m
+ [m
+[31m-1685739694 source:c:\users\user\desktop\currencycon\main.c[m
+[32m+[m[32m1685792754 source:c:\users\user\desktop\currencycon\main.c[m
+ 	<stdio.h>[m
+ 	<stdlib.h>[m
+ 	"Struct.h"[m
+[36m@@ -36,14 +36,15 @@[m
+ [m
+ 1685737806 c:\users\user\desktop\currencycon\struct.h[m
+ [m
+[31m-1685737790 c:\users\user\desktop\currencycon\convert.h[m
+[32m+[m[32m1685740150 c:\users\user\desktop\currencycon\convert.h[m
+ 	"Insert.h"[m
+ [m
+ 1685737800 c:\users\user\desktop\currencycon\insert.h[m
+ [m
+[31m-1685737798 c:\users\user\desktop\currencycon\dis.h[m
+[32m+[m[32m1685740175 c:\users\user\desktop\currencycon\dis.h[m
+ [m
+[31m-1685739832 c:\users\user\desktop\currencycon\searchid.h[m
+[32m+[m[32m1685740319 c:\users\user\desktop\currencycon\searchid.h[m
+ [m
+[31m-1685737792 c:\users\user\desktop\currencycon\accmod.h[m
+[32m+[m[32m1685807967 c:\users\user\desktop\currencycon\accmod.h[m
+[32m+[m	[32m<string.h>[m
+ [m
+[1mdiff --git a/CURR_EXCH.layout b/CURR_EXCH.layout[m
+[1mindex 8b847e8..5f57423 100644[m
+[1m--- a/CURR_EXCH.layout[m
+[1m+++ b/CURR_EXCH.layout[m
+[36m@@ -2,39 +2,39 @@[m
+ <CodeBlocks_layout_file>[m
+ 	<FileVersion major="1" minor="0" />[m
+ 	<ActiveTarget name="Debug" />[m
+[31m-	<File name="SearchID.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">[m
+[32m+[m	[32m<File name="Convert.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">[m
+ 		<Cursor>[m
+[31m-			<Cursor1 position="658" topLine="10" />[m
+[32m+[m			[32m<Cursor1 position="3275" topLine="135" />[m
+ 		</Cursor>[m
+ 	</File>[m
+[31m-	<File name="main.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">[m
+[32m+[m	[32m<File name="Struct.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">[m
+ 		<Cursor>[m
+[31m-			<Cursor1 position="121" topLine="0" />[m
+[32m+[m			[32m<Cursor1 position="159" topLine="0" />[m
+ 		</Cursor>[m
+ 	</File>[m
+[31m-	<File name="ACCMOD.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">[m
+[32m+[m	[32m<File name="ACCMOD.h" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">[m
+ 		<Cursor>[m
+[31m-			<Cursor1 position="1731" topLine="95" />[m
+[32m+[m			[32m<Cursor1 position="756" topLine="24" />[m
+ 		</Cursor>[m
+ 	</File>[m
+[31m-	<File name="Dis.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">[m
+[32m+[m	[32m<File name="Insert.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">[m
+ 		<Cursor>[m
+[31m-			<Cursor1 position="197" topLine="0" />[m
+[32m+[m			[32m<Cursor1 position="111" topLine="0" />[m
+ 		</Cursor>[m
+ 	</File>[m
+[31m-	<File name="Struct.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">[m
+[32m+[m	[32m<File name="Dis.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">[m
+ 		<Cursor>[m
+[31m-			<Cursor1 position="159" topLine="0" />[m
+[32m+[m			[32m<Cursor1 position="197" topLine="0" />[m
+ 		</Cursor>[m
+ 	</File>[m
+[31m-	<File name="Insert.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">[m
+[32m+[m	[32m<File name="SearchID.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">[m
+ 		<Cursor>[m
+[31m-			<Cursor1 position="26977" topLine="51" />[m
+[32m+[m			[32m<Cursor1 position="658" topLine="10" />[m
+ 		</Cursor>[m
+ 	</File>[m
+[31m-	<File name="Convert.h" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">[m
+[32m+[m	[32m<File name="main.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">[m
+ 		<Cursor>[m
+[31m-			<Cursor1 position="1608" topLine="148" />[m
+[32m+[m			[32m<Cursor1 position="2833" topLine="48" />[m
+ 		</Cursor>[m
+ 	</File>[m
+ </CodeBlocks_layout_file>[m
+[1mdiff --git a/bin/Debug/CURR_EXCH.exe b/bin/Debug/CURR_EXCH.exe[m
+[1mindex ba07d9b..8095f08 100644[m
+Binary files a/bin/Debug/CURR_EXCH.exe and b/bin/Debug/CURR_EXCH.exe differ
+[1mdiff --git a/main.c b/main.c[m
+[1mindex f60a437..dbbf239 100644[m
+[1m--- a/main.c[m
+[1m+++ b/main.c[m
+[36m@@ -73,9 +73,9 @@[m [mint main()[m
+             case 4:[m
+                 // Perform action for Option 4[m
+             {[m
+[31m-                //accMode();[m
+[31m-                printf("Comming soon... \n");[m
+[31m-                printf("Extra feature on work. \n");[m
+[32m+[m[32m                accMode();[m
+[32m+[m[32m              //  printf("Comming soon... \n");[m
+[32m+[m[32m              // printf("Extra feature on work. \n");[m
+ [m
+              break;[m
+ [m
+[1mdiff --git a/obj/Debug/main.o b/obj/Debug/main.o[m
+[1mindex 7353b56..20c2ca0 100644[m
+Binary files a/obj/Debug/main.o and b/obj/Debug/main.o differ
