@@ -71,7 +71,7 @@ void displayBal (double dep,double conn)
     printf("\n");
 }
 
-double enterDep(char name [],char surname [])
+double enterDep(char name [])
 {
     int i=0;
     double dep;
@@ -139,7 +139,7 @@ void accMenu()
     printf("==========================================\n");
 }
 
-void accMode()
+void accMode(int gnt)
 {
     int opp;
     int cnt=0;
@@ -149,6 +149,7 @@ void accMode()
 
     for(;;)
     {
+
         accMenu();
         printf("Enter option: ");
         scanf("%d",&opp);
@@ -161,7 +162,7 @@ void accMode()
 
             if(cnt==0)
             {
-                dep=enterDep(name,surname);
+                dep=enterDep(name);
                 cnt++;
             }
             else
