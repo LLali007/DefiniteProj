@@ -1,0 +1,49 @@
+# depslib dependency file v1.0
+1685691974 source:c:\users\user1\desktop\word\curr_exch\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Struct.h"
+	"Convert.h"
+	"Insert.h"
+	"Dis.h"
+	"SearchID.h"
+	"ACCMOD.h"
+
+1685647820 c:\users\user1\desktop\word\curr_exch\struct.h
+
+1685691974 c:\users\user1\desktop\word\curr_exch\convert.h
+	"Insert.h"
+
+1685527693 c:\users\user1\desktop\word\curr_exch\insert.h
+
+1685188854 c:\users\user1\desktop\word\curr_exch\display.h
+
+1685189454 c:\users\user1\desktop\word\curr_exch\dis.h
+
+1685197612 c:\users\user1\desktop\word\curr_exch\searchid.h
+
+1685533404 c:\users\user1\desktop\word\curr_exch\accmod.h
+
+1685739694 source:c:\users\user\desktop\currencycon\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Struct.h"
+	"Convert.h"
+	"Insert.h"
+	"Dis.h"
+	"SearchID.h"
+	"ACCMOD.h"
+
+1685737806 c:\users\user\desktop\currencycon\struct.h
+
+1685737790 c:\users\user\desktop\currencycon\convert.h
+	"Insert.h"
+
+1685737800 c:\users\user\desktop\currencycon\insert.h
+
+1685737798 c:\users\user\desktop\currencycon\dis.h
+
+1685739832 c:\users\user\desktop\currencycon\searchid.h
+
+1685737792 c:\users\user\desktop\currencycon\accmod.h
+
