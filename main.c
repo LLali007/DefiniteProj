@@ -37,7 +37,7 @@ void displayMenu() {
 
 int main()
 {
-    int choice;
+    int choice,gnt=0;
     struct Mon *head=NULL;
 
     // View of current exchanging rates (~INFO TAB)
@@ -73,10 +73,9 @@ int main()
             case 4:
                 // Perform action for Option 4
             {
-                accMode();
-              //  printf("Comming soon... \n");
-              // printf("Extra feature on work. \n");
 
+                accMode(gnt);
+                gnt++;
              break;
 
             }
